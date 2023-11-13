@@ -1,0 +1,5 @@
+.idea
+introduction-docker.iml
+*/node_modules
+*/.env
+*/dist

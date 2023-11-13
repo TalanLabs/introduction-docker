@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    image: frontend-test
+    ports:
+      - "8080:8080"
+
+  backend:
+    build:
+      context: ./backend
+    image: backend-test
+    ports:
+      - "3000:3000"
+
+  postgres:
+    hostname: postgres
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: docker-intro
+    ports:
+      - "5433:5432"

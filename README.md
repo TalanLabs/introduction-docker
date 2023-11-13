@@ -26,29 +26,41 @@ Mostly bad code.
 
 ## Step 0 : explain please
 
-TBA
+What is docker ? Docker engine ? An image ? A container ? 
+
+## Step 0.1 : Let's get the party started (install)
+
+We're going to run the app to see what it does.
+- First install dependencies in both frontend and backend folders (i.e. see cheat sheet)
+- You might need to create a database too. You can call it whatever you want, as you change the `DB_NAME` var in the `.env` file of the backend.
+- Now you can run the frontend and the backend (our table "Cat" is created at the start of the backend)
+- Go to http://localhost:8080
+- Enjoy cats
 
 ## Step 1 : Minecraft (build)
 
 First step of this exercise is to build our images for our frontend and backend.
-TBA
+To achieve that you need to create two docker files at the root of each source code (backend AND frontend), then run a "docker build" (i.e. see "Cheat Sheet" section for more info or : https://docs.docker.com/engine/reference/commandline/build/) command at the same level as the Dockerfile
+You might have to think "what step do I do to build my frontend/backend" to write the Dockerfile :) and the doc : https://docs.docker.com/engine/reference/builder/
 
-## Step 2 : Hello, world ? (interact)
+## Step 1.2 : Hello, world ? (interact)
 
-Try to use the app. Go to the frontend and try to click the buttons. What is happening ?
-TBA
+Now that both frontend and backend are dockerized, try to use the app. What is happening ?
+Can you explain why ?
 
 ## Step 3 : Time to play Mozart (docker compose)
 
-TBA
+You can write a file to launch all your containers at the same time. It is called a Docker Compose.
+Write a docker compose file that launch a frontend, a backend, and a postgres instance for your database.
+https://docs.docker.com/compose/features-uses/
 
 ## Step 4 : Stop being Sisyphe (mount volumes)
 
-Now stop your app with docker compose down. It'll remove all containers linked inside your docker-compose configuration file. If you re-run docker compose, and try to get the cats you created what happened ? 
+Now stop your app with docker compose down. It'll remove all containers linked inside your docker-compose configuration file. If you re-run docker compose, and try to get the cats you created, what happened ? 
 
-## Bonus : multistep building
+## Bonus : La Défense (multi stage building)
 
-TBA
+https://docs.docker.com/build/building/multi-stage/
 
 #### CheatSheet
 
@@ -76,35 +88,45 @@ run npm run start
 ### Commands
 
 (in a context with a dockerfile)
-docker build . -t <your_tag> => build from a dockerfile an img
+- `docker build . -t <your_tag>` => build from a dockerfile an img
 
-docker run <your_img_name>
--d => run it in background
---name => give your container a name
--p <hostport>/<dockerport> => specify a port binding
+- `docker run <your_img_name>`
+   - `-d` => run it in background
+   - `--name` => give your container a name
+   - `-p` <hostport>/<dockerport> => specify a port binding
+   - `--env-file=<path>` -> specify a env file to use during run context
 
-docker image ls -la -> list all images
-docker container ls -> list all running container
--la -> list also those not running
+- `docker image ls -la` -> list all images
+- `docker container ls` -> list all running container
+   - `-la` -> list also those not running
 
-docker container prune -> remove all unused container
-docker image prune -> remove all unused img
+- `docker container prune` -> remove all unused container
+- `docker image prune` -> remove all unused img
 
-docker exec -it <your_container_name> sh -> run a sh in the FS of your container
+`docker exec -it <your_container_name> sh` -> run a sh in the FS of your running container
 
-docker logs <your_container_name> -> show the container name
+`docker logs <your_container_name>` -> show the container logs
 
 ### Dockerfile
 
-FROM <name>:<version> -> select the base image for your image
-ex : FROM java:17
+`FROM <name>:<version>` -> select the base image for your image
+- ex : FROM java:17
 
-RUN <command> <args> -> run a command
-ex: RUN sudo apt-get install openssl
+`RUN <command> <args>` -> run a command
+- ex: RUN sudo apt-get install openssl
 
-COPY <path> <path_in_container> -> copy a file or a directory
-ex: COPY /src . (copy all files from /src to /)
+`COPY <path> <path_in_container>` -> copy a file or a directory
+- ex: COPY /src . (copy all files from /src to /)
 
-EXPOSE <port> -> not changing everything, but it specifies to who reads the dockerfile which port to expose. Good to know.
+`EXPOSE <port>` -> not changing everything, but it specifies to who reads the dockerfile which port to expose. Good to know.
+
+`CMD ["arg1", "arg2", "arg3"]` -> run command when "docker run"
+- ex : CMD ["npx", "npm-check"]
+
+### Docker Compose 
+
+`docker compose up` -> run all containers defined in compose file
+- `--build` -> rebuild images
+`docker compose down` -> stop and remove all containers defines in the compose file
 
 

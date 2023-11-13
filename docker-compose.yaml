@@ -5,15 +5,10 @@ services:
     build:
       context: ./frontend
     image: frontend-test
+    env_file:
+      - ./frontend/.env
     ports:
       - "8080:8080"
-
-  backend:
-    build:
-      context: ./backend
-    image: backend-test
-    ports:
-      - "3000:3000"
 
   postgres:
     hostname: postgres
@@ -24,3 +19,18 @@ services:
       POSTGRES_DB: docker-intro
     ports:
       - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+  backend:
+    build:
+      context: ./backend
+    image: backend-test
+    env_file:
+      - ./backend/.env
+    ports:
+      - "3000:3000"
+
+volumes:
+  db-data:

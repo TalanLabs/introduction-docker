@@ -1,0 +1,13 @@
+#root {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #00353F
+}
+
+img {
+  width: 100px; /* Set your desired width */
+  height: 100px; /* Set your desired height */
+  object-fit: cover; /* Optional: Specifies how the content of the replaced element should be resized to fit its container. */
+}

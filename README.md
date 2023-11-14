@@ -127,6 +127,7 @@ run npm run start
 
 `docker compose up` -> run all containers defined in compose file
 - `--build` -> rebuild images
+
 `docker compose down` -> stop and remove all containers defines in the compose file
 
 

@@ -67,23 +67,32 @@ https://docs.docker.com/build/building/multi-stage/
 ## Run frontend
 
 You need Node JS.
+
 Go to /frontend directory
-run npm install
+
+`run npm install`
 
 ### No build
-run npm run dev
+
+`run npm run dev`
 
 ### With build
-run npm run build
-run npm run preview
+
+`run npm run build`
+
+`run npm run preview`
 
 ## Run backend
 
 You need Node JS.
-Go to /frontend directory
-run npm install
-run npm run build
-run npm run start
+
+Go to /backend directory
+
+`run npm install`
+
+`run npm run build`
+
+`run npm run start`
 
 ## Commands
 
@@ -110,18 +119,33 @@ run npm run start
 ## Dockerfile
 
 `FROM <name>:<version>` -> select the base image for your image
-- ex : FROM java:17
+- ex : 
+```dockerfile
+FROM java:17
+```
 
 `RUN <command> <args>` -> run a command
-- ex: RUN sudo apt-get install openssl
+- ex: 
+```dockerfile
+RUN sudo apt-get install openssl
+```
 
 `COPY <path> <path_in_container>` -> copy a file or a directory
-- ex: COPY /src . (copy all files from /src to /)
+- ex: (copy all files from /src to /)
+```dockerfile
+COPY ./src .
+```
 
-`EXPOSE <port>` -> not changing everything, but it specifies to who reads the dockerfile which port to expose. Good to know.
+
+`EXPOSE <port>`
+-> not changing everything, but it specifies to who reads the dockerfile which port to expose. Good to know.
+
 
 `CMD ["arg1", "arg2", "arg3"]` -> run command when "docker run"
-- ex : CMD ["npx", "npm-check"]
+- ex : 
+```dockerfile
+CMD ["npx", "npm-check"]
+```
 
 ## Docker Compose 
 

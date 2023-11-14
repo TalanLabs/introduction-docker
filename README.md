@@ -1,15 +1,15 @@
-### Introduction
+# Introduction
 
 Welcome to this docker introduction !! 
 In this practice exercise we'll see how to build an image of an app, launch it in container and interact with it from outside the container.
 
-### Requirements
+# Requirements
 
 https://www.postgresql.org -> last
 https://www.docker.com/get-started/ -> last
 https://nodejs.org/en/docs -> at least 16.16.0
 
-### What you'll find here
+# What you'll find here
 
 Mostly bad code.
 
@@ -22,7 +22,7 @@ Mostly bad code.
 
 - README.md -> what you're reading atm. Contains help, knowledge and power (and eventually instructions)
 
-### Instructions
+# Instructions
 
 ## Step 0 : explain please
 
@@ -62,22 +62,22 @@ Now stop your app with docker compose down. It'll remove all containers linked i
 
 https://docs.docker.com/build/building/multi-stage/
 
-#### CheatSheet
+# CheatSheet
 
-### Run frontend
+## Run frontend
 
 You need Node JS.
 Go to /frontend directory
 run npm install
 
-## No build
+### No build
 run npm run dev
 
-## With build
+### With build
 run npm run build
 run npm run preview
 
-### Run backend
+## Run backend
 
 You need Node JS.
 Go to /frontend directory
@@ -85,7 +85,7 @@ run npm install
 run npm run build
 run npm run start
 
-### Commands
+## Commands
 
 (in a context with a dockerfile)
 - `docker build . -t <your_tag>` => build from a dockerfile an img
@@ -107,7 +107,7 @@ run npm run start
 
 `docker logs <your_container_name>` -> show the container logs
 
-### Dockerfile
+## Dockerfile
 
 `FROM <name>:<version>` -> select the base image for your image
 - ex : FROM java:17
@@ -123,7 +123,7 @@ run npm run start
 `CMD ["arg1", "arg2", "arg3"]` -> run command when "docker run"
 - ex : CMD ["npx", "npm-check"]
 
-### Docker Compose 
+## Docker Compose 
 
 `docker compose up` -> run all containers defined in compose file
 - `--build` -> rebuild images

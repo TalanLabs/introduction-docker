@@ -101,11 +101,11 @@ Go to /backend directory
 
 - `docker run <your_img_name>`
    - `-d` => run it in background
-   - `--name` => give your container a name
-   - `-p` <hostport>/<dockerport> => specify a port binding
+   - `--name <name_of_your_container>` => give your container a name
+   - `-p <hostport>/<dockerport>` => specify a port binding
    - `--env-file=<path>` -> specify a env file to use during run context
 
-- `docker image ls -la` -> list all images
+- `docker image ls` -> list all images
 - `docker container ls` -> list all running container
    - `-la` -> list also those not running
 

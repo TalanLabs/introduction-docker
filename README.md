@@ -70,17 +70,17 @@ You need Node JS.
 
 Go to /frontend directory
 
-`run npm install`
+`npm install`
 
 ### No build
 
-`run npm run dev`
+`npm run dev`
 
 ### With build
 
-`run npm run build`
+`npm run build`
 
-`run npm run preview`
+`npm run preview`
 
 ## Run backend
 
@@ -88,11 +88,11 @@ You need Node JS.
 
 Go to /backend directory
 
-`run npm install`
+`npm install`
 
-`run npm run build`
+`npm run build`
 
-`run npm run start`
+`npm run start`
 
 ## Commands
 
